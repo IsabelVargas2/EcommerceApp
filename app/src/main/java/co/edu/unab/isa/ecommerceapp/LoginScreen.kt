@@ -120,6 +120,6 @@ fun LoginScreen(navController: NavController) {
 @Composable
 fun LoginScreenPreview() {
     EcommerceAppTheme {
-       // LoginScreen()
+       //LoginScreen()
     }
 }
