@@ -11,7 +11,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import co.edu.unab.isa.ecommerceapp.ui.theme.EcommerceAppTheme
+import co.edu.unab.isa.ecommerceapp.ui.theme.RegisterScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,8 +23,22 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             EcommerceAppTheme {
-                LoginScreen()
+                val myNavController = rememberNavController()
+                val myStartDestination = "Login"
 
+
+                NavHost(
+                    navController = myNavController,
+                    startDestination = myStartDestination,
+                    modifier = Modifier.fillMaxSize()
+                ){
+                    composable("Login") {
+                        LoginScreen(myNavController)
+                    }
+                    composable("register") {
+                        RegisterScreen(myNavController)
+                    }
+                }
             }
         }
     }
