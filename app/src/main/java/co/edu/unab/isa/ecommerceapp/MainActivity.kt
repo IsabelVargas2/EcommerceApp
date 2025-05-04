@@ -15,6 +15,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import co.edu.unab.isa.ecommerceapp.ui.theme.EcommerceAppTheme
+import co.edu.unab.isa.ecommerceapp.ui.theme.NavigationApp
 import co.edu.unab.isa.ecommerceapp.ui.theme.RegisterScreen
 
 class MainActivity : ComponentActivity() {
@@ -22,26 +23,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            EcommerceAppTheme {
-                val myNavController = rememberNavController()
-                val myStartDestination = "Login"
+            EcommerceAppTheme{
+                NavigationApp()
 
-
-                NavHost(
-                    navController = myNavController,
-                    startDestination = myStartDestination,
-                    modifier = Modifier.fillMaxSize()
-                ){
-                    composable("Login") {
-                        LoginScreen(myNavController)
-                    }
-                    composable("register") {
-                        RegisterScreen(myNavController)
-                    }
-                    composable("Home") {
-                        HomeScreen()
-                    }
-                }
             }
         }
     }

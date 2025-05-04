@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "820698827622",
+    "project_id": "loginfirebase-49efe",
+    "storage_bucket": "loginfirebase-49efe.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:820698827622:android:0be365d7be08f68af4d6a7",
+        "android_client_info": {
+          "package_name": "co.edu.unab.isa.ecommerceapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9bICLfORFYCQKuTcjRokoeSZPKeAluL8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

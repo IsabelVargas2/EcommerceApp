@@ -2,6 +2,7 @@ package co.edu.unab.isa.ecommerceapp
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,6 +15,8 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.ExitToApp
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -25,7 +28,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -35,10 +40,36 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import co.edu.unab.isa.ecommerceapp.ui.theme.EcommerceAppTheme
 import coil3.compose.rememberAsyncImagePainter
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(onClickLogout: () -> Unit ={}) {
+    val auth = Firebase.auth
+    val user = auth.currentUser
+
+    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
+        Column {
+            Text("HOME SCREEN", fontSize = 30.sp)
+            if(user !=null){
+                Text(user.email ?: "No hay usuario")
+            }else{
+                Text("No hay usuario")
+            }
+            Button(onClick = {
+                auth.signOut()
+                onClickLogout()
+            },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color(0xffff9900)
+                )
+            ){
+
+                Text("Cerrar Sesión")
+            }
+        }
+    }
     Scaffold(
         topBar = {
             val scrollBehavior =
@@ -100,6 +131,7 @@ fun HomeScreen() {
             }
         }
     }
+
 }
 
 
